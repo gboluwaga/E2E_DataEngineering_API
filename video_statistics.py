@@ -94,12 +94,9 @@ def extract_video_data(video_ids):
                 extracted_data.append(video_data)
 
         return extracted_data
-        
-
-
+    
     except requests.exceptions.RequestException as e:
         raise e
-
 
 def save_as_json_to_file_path(extracted_data):
     file_path = f"./data/youtube_data_{date.today()}.json"
