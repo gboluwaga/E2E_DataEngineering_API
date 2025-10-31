@@ -3,6 +3,7 @@ from datetime import date
 import json
 import os
 from dotenv import load_dotenv
+from airflow.decorators import dag, task
 
 
 load_dotenv(dotenv_path="./.env")
@@ -11,7 +12,7 @@ API_KEY = os.getenv("API_KEY")
 CHANNEL_HANDLE = os.getenv("CHANNEL_HANDLE")
 maxResult = 50
 
-
+@task
 def get_playlistid ():
     try :
         youtube_url = f"https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle={CHANNEL_HANDLE}&key={API_KEY}"
@@ -25,7 +26,8 @@ def get_playlistid ():
 
     except requests.exceptions.RequestException as e:
         raise e
-    
+  
+@task   
 def get_video_id(playlist_id):
 
     video_ids = []
@@ -59,6 +61,7 @@ def get_video_id(playlist_id):
     except requests.exceptions.RequestException as e:
         raise e
 
+@task
 def extract_video_data(video_ids):
     extracted_data = []
 
@@ -98,6 +101,7 @@ def extract_video_data(video_ids):
     except requests.exceptions.RequestException as e:
         raise e
 
+@task
 def save_as_json_to_file_path(extracted_data):
     file_path = f"./data/youtube_data_{date.today()}.json"
 
