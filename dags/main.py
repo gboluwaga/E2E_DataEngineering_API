@@ -12,7 +12,7 @@ default_args = {
     'email_on_retry': False,
     #'retries': 1,
     #'retry_delay': timedelta(minutes=5),
-    'start_date': datetime(2025, 10, 31, tz=local_tz),
+    'start_date': datetime(2025, 1, 1, tzinfo=local_tz),
     #'schedule_interval': '@daily',
     'dagrun_timeout': timedelta(hours=1),
     #'end_date': None,
@@ -21,11 +21,11 @@ default_args = {
 
 
 with DAG(
-    dag_id = 'youtube_video_statistics_dag',
+    dag_id='youtube_video_statistics_dag',
     default_args=default_args,
     description='A DAG to extract YouTube video statistics and save as JSON',
     schedule_interval='0 * * * *',
-    catchup=False
+    catchup=False,
 ) as dag:
 
     #Define Task
