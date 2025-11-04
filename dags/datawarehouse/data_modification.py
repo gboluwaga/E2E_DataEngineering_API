@@ -1,7 +1,7 @@
 import logging
 
 logger = logging.getLogger(__name__)
-table = "yt_api"
+table = "yt_video_statistics"
 
 
 def insert_rows(cur, conn, schema, row):
