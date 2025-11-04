@@ -16,7 +16,7 @@ def load_path():
             return data
     except FileNotFoundError:
         logger.error(f"File not found: {file_path}")
-        return {}
+        raise
     except json.JSONDecodeError:
         logger.error(f"Error decoding JSON from file: {file_path}")
-        return {}
+        raise
