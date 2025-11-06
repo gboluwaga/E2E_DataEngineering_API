@@ -9,7 +9,7 @@ import logging
 from airflow.decorators import dag, task
 
 logger = logging.getLogger(__name__)
-table = "youtube_video_statistics"
+table = "yt_video_statistics"
 
 @task
 def staging_table():

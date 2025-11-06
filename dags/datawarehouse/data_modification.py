@@ -15,7 +15,7 @@ def insert_rows(cur, conn, schema, row):
             cur.execute(
                 f"""
                 INSERT INTO {schema}.{table}("Video_ID", "Video_Title", "Upload_Date", "Duration", "Video_Views", "Likes_Count", "Comments_Count")
-                VALUES (%(video_id)s, %(title)s, %(published_date)s, %(duration)s, %(viewcount)s, %(likeCount)s, %(commentcount)s);
+                VALUES (%(video_id)s, %(title)s, %(published_date)s, %(duration)s, %(viewcount)s, %(likecount)s, %(commentcount)s);
                 """,
                 row,
             )
