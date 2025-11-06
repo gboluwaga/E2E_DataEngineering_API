@@ -49,7 +49,7 @@ def update_rows(cur, conn, schema, row):
             upload_date = "published_date"
             video_title = "title"
             video_views = "viewcount"
-            likes_count = "likeCount"
+            likes_count = "likecount"
             comments_count = "commentcount"
         # core
         else:
