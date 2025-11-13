@@ -7,7 +7,9 @@ logger = logging.getLogger(__name__)
 
 def load_path():
     """Function to load data from a JSON file and return as a dictionary."""
-    file_path = f"./data/youtube_data_{date.today()}.json"
+    #file_path = f"./data/youtube_data_{date.today()}.json"
+
+    file_path = f"./data/"
     try:
         logger.info(f"Loading file :youtube_data_{date.today()}.json")
         with open(file_path, "r", encoding= "utf-8") as json_file:
