@@ -6,3 +6,6 @@ data_source pg_datasource:
   port: ${POSTGRES_CONN_PORT}
   database: ${ELT_DATABASE_NAME}
   schema: ${SCHEMA}
+
+telemetry:
+  enabled: false
