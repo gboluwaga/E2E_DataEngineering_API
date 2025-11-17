@@ -1,4 +1,4 @@
-checks for yt_api:
+checks for yt_video_statistics:
   - missing_count("Video_ID") = 0
   - duplicate_count("Video_ID") = 0
 
