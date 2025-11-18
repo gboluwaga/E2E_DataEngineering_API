@@ -3,6 +3,7 @@ import pendulum
 from datetime import datetime, timedelta
 from api.video_statistics import get_playlistid, get_video_id, extract_video_data, save_as_json_to_file_path
 from datawarehouse.dwh import staging_table, core_table
+from dataquality.soda import yt_elt_data_quality
 
 local_tz = pendulum.timezone("Africa/Lagos")
 
@@ -20,6 +21,9 @@ default_args = {
     'max_active_runs': 1,
 }
 
+#variables
+staging_schema ="staging"
+core_schema = "core"
 
 with DAG(
     dag_id='youtube_video_statistics_dag',
@@ -53,3 +57,19 @@ with DAG(
 
     #define task dependencies
     staging_tables >> core_tables
+
+
+with DAG(
+    dag_id='data_quality_checks',
+    default_args=default_args,
+    description='Run data quality checks using Soda',
+    schedule_interval='0 */4 * * *',
+    catchup=False,
+) as dag:
+
+    #Define Task
+    soda_staging_validation = yt_elt_data_quality(staging_schema)
+    soda_core_validation = yt_elt_data_quality(core_schema)
+
+    #define task dependencies
+    soda_staging_validation >> soda_core_validation
