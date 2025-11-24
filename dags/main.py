@@ -83,7 +83,7 @@ with DAG(
     schedule_interval='0 */4 * * *',
     catchup=False,
     schedule = None,
-) as dag:
+) as dag_quality:
 
     #Define Task
     soda_staging_validation = yt_elt_data_quality(staging_schema)
