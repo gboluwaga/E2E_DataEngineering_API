@@ -36,8 +36,8 @@ def test_dags_integrity(dagbag):
 
     # 4.
     expected_task_counts = {
-        "youtube_video_statistics_dag": 4,
-        "update_db": 2,
+        "youtube_video_statistics_dag": 5,
+        "update_db": 3,
         "data_quality_checks": 2,
     }
     print("===========")
