@@ -68,7 +68,7 @@ with DAG(
     core_tables = core_table()
 
     trigger_data_quality  = TriggerDagRunOperator(
-        task_id="trigger_data_quality ",
+        task_id="trigger_data_quality",
         trigger_dag_id="data_quality_checks",
     )
 
@@ -83,7 +83,7 @@ with DAG(
     schedule_interval='0 */4 * * *',
     catchup=False,
     schedule = None,
-) as dag_quality:
+) as dag:
 
     #Define Task
     soda_staging_validation = yt_elt_data_quality(staging_schema)
