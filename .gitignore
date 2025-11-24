@@ -3,3 +3,4 @@ __pychache__/
 .env 
 logs/
 *.pyc
+project_architecture.png
